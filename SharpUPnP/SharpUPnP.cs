@@ -154,16 +154,9 @@ namespace SharpUPnP
             r.ContentLength = b.Length;
             r.GetRequestStream().Write(b, 0, b.Length);
             XmlDocument resp = new XmlDocument();
-            try
-            {
-                WebResponse wres = r.GetResponse();
-                Stream ress = wres.GetResponseStream();
-                resp.Load(ress);
-            }
-            catch (WebException)
-            {
-
-            }
+            WebResponse wres = r.GetResponse();
+            Stream ress = wres.GetResponseStream();
+            resp.Load(ress);
             return resp;
         }
     }
