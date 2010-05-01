@@ -1,0 +1,40 @@
+SharpUPnP is a simple library to help forward ports using UPnP
+All of the methods in the SharpUPnP class are static so there is
+no need to initialize a class instance.
+
+Discover()
+Before you do anything, you must run the Discover() method. This
+tries to get the IP of your router, and then get the url of the
+UPnP service to send requests to. If there is no UPnP device 
+available, the Discover() method will return false.
+
+FowardPort()
+The ForwardPort method takes 3 arguments: an int port number, a 
+ProtocolType protocol, and a string description. The port number
+should be the port you are trying to forward. The protocol should
+be either Tcp or Udp. These are the two protocols that the router
+can forward to a device, and the one you choose should be the one
+that your program is listening for. The descrption is just a short
+string to describe what the port is being used for (generally the
+program name).
+
+DeleteForwardingRule()
+The DeleteForwardingRule method takes two arguments: int port, and
+ProtocolType protocol. This finds the forwarding rule with the 
+corresponding port number and protocol, and erases it from the 
+port mapping table.
+
+GetExternalIP()
+The GetExternalIP address does not need to be called for any of
+the other functions. It is called inside other code, but it might
+be of use to you for other purposes. This returns an IPAddress
+
+SOAPRequest()
+This method is if you want to make any other SOAP requests besides
+the ones I have provided The SOAPRequest method takes 3 arguments: 
+string url, string soap, string function. The url should be the url
+of the UPnP service on your router. After calling the Discover method,
+this will be stored in _serviceUrl, and you can just pass that. soap
+should be the actual request xml that you are sending. function should
+be a string containing the name of the UPnP function you are trying to
+perform. This tells the router what the soap xml is for.

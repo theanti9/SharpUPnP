@@ -16,7 +16,7 @@ namespace SharpUPnP
             get { return _timeout; }
             set { _timeout = value; }
         }
-        static string _descUrl, _serviceUrl, _eventUrl;
+        public static string _descUrl, _serviceUrl, _eventUrl;
         public static bool Discover()
         {
             System.Net.NetworkInformation.NetworkInterface nic = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()[0];
